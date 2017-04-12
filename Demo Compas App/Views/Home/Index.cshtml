@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+    if (Session["UserId"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+
+    }
+}
+
+<html>
+<head>
+   <title> Home Controller </title>
+    <style>
+
+          span { width:100%; display:inline-block; }
+    span.align-right { text-align:right; }    
+    span a { font-size:16px; }
+    </style>
+
+</head>
+<h1> Sucessful Login</h1>
+<h2>User:@Session["Name"].ToString()</h2>
+<span class="align-right">
+    <a href="@Url.Action("Logout","Login")"> LogOut</a>
+</span>
+</html>
