@@ -1,4 +1,4 @@
-﻿@model Demo_Compas_App.Models.User_Login
+﻿@model Demo_Compas_App.Models.User_Reg
 @{
     ViewBag.Title = "Index";
 }
@@ -26,10 +26,10 @@
        <table>
            <tr>
                <td>
-                   @Html.LabelFor(model => model.Name)
+                   @Html.LabelFor(model => model.UserName)
                </td>
             <td>
-                @Html.TextBoxFor(model => model.Name)
+                @Html.TextBoxFor(model => model.UserName)
             </td>
            </tr>
            <tr>

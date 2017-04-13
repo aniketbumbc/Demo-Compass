@@ -29,5 +29,6 @@ namespace Demo_Compas_App.Models
         public string Email { get; set; }
         public string Station { get; set; }
         public Nullable<bool> IsAdmin { get; set; }
+        public string Loginerror { get; set; }
     }
 }

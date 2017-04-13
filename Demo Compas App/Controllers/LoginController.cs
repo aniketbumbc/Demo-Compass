@@ -16,13 +16,20 @@ namespace Demo_Compas_App.Controllers
         }
 
         [HttpPost]
-        public ActionResult autherize(Demo_Compas_App.Models.User_Login usermodel)
+        public ActionResult autherize(Demo_Compas_App.Models.User_Reg usermodel)
         {
-            using (TestEntities db = new TestEntities())
+            using (TestEntitiesRegistration db = new TestEntitiesRegistration())
 
             {
-               
-                var userDetails = db.User_Login.Where(x => x.Name == usermodel.Name && x.Password == usermodel.Password).FirstOrDefault();
+                //int isadmin= Convert.ToInt32(db.User_Reg.Where(y=>y.IsAdmin==usermodel.IsAdmin).First());
+               // if(isadmin==0)
+                //{
+                   // usermodel.Loginerror = "Not Valid User";
+                   // return View("Index", usermodel);
+                //}
+                
+
+                var userDetails = db.User_Reg.Where(x => x.UserName == usermodel.UserName && x.Password == usermodel.Password).FirstOrDefault();
                 if (userDetails == null)
                 {
                     usermodel.Loginerror = "Wrong User Name or password";
@@ -30,10 +37,15 @@ namespace Demo_Compas_App.Controllers
                 }
                 else
                 {
-                    Session["Name"] = userDetails.Name;
+                    Session["Name"] = userDetails.UserName;
                     Session["UserId"] = userDetails.UserId;
                     return RedirectToAction("Index", "Home");
                 }
+
+
+
+
+
             }
 
 
