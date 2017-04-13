@@ -26,7 +26,10 @@ namespace Demo_Compas_App.Controllers
                 if (dbModel.User_Reg.Any(x => x.UserName == userModel.UserName))
                 {
 
-                    ViewBag.Dmessage = "User name already Exit ";
+                    //ViewBag.Dmessage = "User name already Exit ";
+                    // return View("AddorEdit", userModel);
+
+                   TempData["AlertMessage"] = "User already Exit";
                     return View("AddorEdit", userModel);
                 }
 
@@ -35,7 +38,8 @@ namespace Demo_Compas_App.Controllers
             }
             ModelState.Clear();
 
-            ViewBag.SuccessMessage = "Register User Sucessfully";
+            //ViewBag.SuccessMessage = "Register User Sucessfully";
+            TempData["AlertMessage2"] = "Register User Sucessfully";
             return View("AddorEdit", new User_Reg());  
         }
 
