@@ -111,6 +111,26 @@
       <DependentUpon>DbModelReg.edmx</DependentUpon>
       <LastGenOutput>DbModelReg.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\RoleMaster.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RoleMaster.edmx</DependentUpon>
+      <LastGenOutput>RoleMaster.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\RoleMaster.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RoleMaster.edmx</DependentUpon>
+      <LastGenOutput>RoleMaster1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TomatoProduct.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TomatoProduct.edmx</DependentUpon>
+      <LastGenOutput>TomatoProduct.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TomatoProduct.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TomatoProduct.edmx</DependentUpon>
+      <LastGenOutput>TomatoProduct.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\UserGetRegister.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UserGetRegister.edmx</DependentUpon>
@@ -120,6 +140,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UserGetRegister.edmx</DependentUpon>
       <LastGenOutput>UserGetRegister.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserMaster.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserMaster.edmx</DependentUpon>
+      <LastGenOutput>UserMaster.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserMaster.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserMaster.edmx</DependentUpon>
+      <LastGenOutput>UserMaster1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -137,6 +167,27 @@
     <Content Include="Models\UserGetRegister.edmx.diagram">
       <DependentUpon>UserGetRegister.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\TomatoProduct.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TomatoProduct.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TomatoProduct.edmx.diagram">
+      <DependentUpon>TomatoProduct.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\RoleMaster.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RoleMaster.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\RoleMaster.edmx.diagram">
+      <DependentUpon>RoleMaster.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\UserMaster.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserMaster.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UserMaster.edmx.diagram">
+      <DependentUpon>UserMaster.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -151,9 +202,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\RoleMasterController.cs" />
+    <Compile Include="Controllers\UserMasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,6 +226,42 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbModelReg.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoleMaster.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoleMaster.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoleMaster.cs">
+      <DependentUpon>RoleMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoleMaster.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoleMaster.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoleMaster1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoleMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TomatoProduct.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TomatoProduct.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TomatoProduct.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TomatoProduct.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TomatoProduct.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TomatoProduct.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TomatoProductInfo.cs">
+      <DependentUpon>TomatoProduct.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserGetRegister.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,6 +276,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UserGetRegister.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserMaster.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserMaster.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserMaster.cs">
+      <DependentUpon>UserMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserMaster.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserMaster.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserMaster1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserMaster.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User_Login.cs">
       <DependentUpon>DbModelReg.tt</DependentUpon>
@@ -207,6 +315,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Registration\AddorEdit.cshtml" />
+    <Content Include="Views\About\Create.cshtml" />
+    <Content Include="Views\RoleMaster\Index.cshtml" />
+    <Content Include="Views\RoleMaster\Create.cshtml" />
+    <Content Include="Views\RoleMaster\Details.cshtml" />
+    <Content Include="Views\RoleMaster\Edit.cshtml" />
+    <Content Include="Views\RoleMaster\Delete.cshtml" />
+    <Content Include="Views\UserMaster\Index.cshtml" />
+    <Content Include="Views\UserMaster\Details.cshtml" />
+    <Content Include="Views\UserMaster\Create.cshtml" />
+    <Content Include="Views\UserMaster\Edit.cshtml" />
+    <Content Include="Views\UserMaster\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

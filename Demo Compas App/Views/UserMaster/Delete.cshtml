@@ -1,0 +1,54 @@
+﻿@model Demo_Compas_App.Models.UserMaster
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<style>
+    td, th {
+        border: 1px,solid,black;
+        text-align: center;
+        padding: 5px;
+    }
+</style>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>User Master</h4>
+    <hr />
+    <table border="1" align="center">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.UserId)</th>
+            <th>@Html.DisplayNameFor(model => model.UserFname)</th>
+            <th>@Html.DisplayNameFor(model => model.UserLname)</th>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <th>@Html.DisplayNameFor(model => model.UserPassword)</th>
+            <th>@Html.DisplayNameFor(model => model.UserEmail)</th>
+            <th>@Html.DisplayNameFor(model => model.UserContactno)</th>
+            <th>@Html.DisplayNameFor(model => model.RoleId)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.UserId)</td>
+            <td>@Html.DisplayFor(model => model.UserFname)</td>
+            <td>@Html.DisplayFor(model => model.UserLname)</td>
+            <td>@Html.DisplayFor(model => model.UserName)</td>
+            <td>@Html.DisplayFor(model => model.UserPassword)</td>
+            <td>@Html.DisplayFor(model => model.UserEmail)</td>
+            <td>@Html.DisplayFor(model => model.UserContactno)</td>
+            <td>@Html.DisplayFor(model => model.RoleId)</td>
+
+        </tr>
+    </table>
+ <br />
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="text-align:center">
+            <input type="submit" value="Delete" class="btn btn-default"  /> 
+           
+        </div>
+        @Html.ActionLink("Back to List", "Index")
+    }
+</div>

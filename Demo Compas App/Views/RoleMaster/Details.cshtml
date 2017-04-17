@@ -1,0 +1,40 @@
+﻿@model Demo_Compas_App.Models.RoleMaster
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<style>
+    td, th {
+        border:1px,solid,black;
+        text-align:center;
+        padding:5px;
+    }
+
+</style>
+<div>
+    <h4>RoleMaster</h4>
+    <hr />
+    <table border="1" align="center">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.RoleId)   </th >
+            <th>   @Html.DisplayNameFor(model => model.RoleName) </th> 
+             <th> @Html.DisplayNameFor(model => model.RoleDesc)</th>   
+              <th>@Html.DisplayNameFor(model => model.RoleStatus) </th>   
+                </tr>
+
+            <tr>
+               <td>@Html.DisplayFor(model => model.RoleId)</td> 
+                <td>@Html.DisplayFor(model => model.RoleName)</td>
+                <td>@Html.DisplayFor(model => model.RoleDesc)</td>
+                <td>@Html.DisplayFor(model => model.RoleStatus)</td>
+                </tr>
+            
+                
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id =Model.RoleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

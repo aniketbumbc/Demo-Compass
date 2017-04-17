@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Demo_Compas_App.Models;
 
 namespace Demo_Compas_App.Controllers
 {

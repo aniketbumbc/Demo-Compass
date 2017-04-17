@@ -1,0 +1,53 @@
+﻿@model Demo_Compas_App.Models.RoleMaster
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<style>
+    td, th {
+        border: 1px,solid,black;
+        text-align: center;
+        padding: 5px;
+    }
+</style>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RoleMaster</h4>
+    <hr />
+    <table border="1" align="center">
+        <tr>
+          <th>@Html.DisplayNameFor(model => model.RoleId)</th>
+            <th>@Html.DisplayNameFor(model => model.RoleName)</th>
+            <th>@Html.DisplayNameFor(model => model.RoleDesc)</th>
+            <th>@Html.DisplayNameFor(model => model.RoleStatus)</th>
+            </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.RoleId)</td>
+            <td>@Html.DisplayFor(model => model.RoleName)</td>
+            <td>@Html.DisplayFor(model => model.RoleDesc)</td>
+            <td>@Html.DisplayFor(model => model.RoleStatus)</td>
+        </tr>
+              </table>  
+            <br />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color" style="text-align:center">
+                    <input type="submit" value="Delete" class="btn btn-default" /> 
+                  
+                </div>
+                
+                @Html.ActionLink("Back to List", "Index")
+
+            }
+
+   
+   
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</div>
