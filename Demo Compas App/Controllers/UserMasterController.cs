@@ -45,21 +45,19 @@ namespace Demo_Compas_App.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
+                
+                
                     using (UserMasterEntities dbModel = new UserMasterEntities())
                     {
                         dbModel.UserMasters.Add(usermaster);
                         dbModel.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-                    
                 }
-                return View(usermaster);
+                return RedirectToAction("Index");
             }
              
-            catch
+            catch(Exception ex)
             {
+                
                 return View();
             }
         }

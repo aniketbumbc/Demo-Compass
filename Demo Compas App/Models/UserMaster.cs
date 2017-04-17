@@ -12,33 +12,18 @@ namespace Demo_Compas_App.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
 
     public partial class UserMaster
     {
-        [DisplayName("First ID")]
         public int UserId { get; set; }
-        [DisplayName("First Name")]
         public string UserFname { get; set; }
-        [DisplayName("Last Name")]
         public string UserLname { get; set; }
-        [DisplayName("User Name")]
-        [Required]
         public string UserName { get; set; }
-        [DisplayName("Password")]
-        
-        [Required]
         public string UserPassword { get; set; }
-        [DisplayName("Email")]
-        [EmailAddress(ErrorMessage ="Invalid Email")]
         public string UserEmail { get; set; }
-        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
-        [DataType(DataType.PhoneNumber)]
-       // [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
-        [DisplayName("Contact Number")]
-        
         public Nullable<int> UserContactno { get; set; }
-        [DisplayName("Roll ID")]
+        [DisplayName("Role Name")]
         public Nullable<int> RoleId { get; set; }
+        public Nullable<bool> isActive { get; set; }
     }
 }

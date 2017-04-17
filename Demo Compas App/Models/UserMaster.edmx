@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UserMaster.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UserMaster.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="UserMaster">
           <Key>
             <PropertyRef Name="UserId" />
@@ -17,12 +17,12 @@
           <Property Name="UserEmail" Type="varchar" MaxLength="50" />
           <Property Name="UserContactno" Type="int" />
           <Property Name="RoleId" Type="int" />
+          <Property Name="isActive" Type="bit" />
         </EntityType>
         <EntityContainer Name="UserMasterStoreContainer">
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UserMaster" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -38,6 +38,7 @@
           <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserContactno" Type="Int32" />
           <Property Name="RoleId" Type="Int32" />
+          <Property Name="isActive" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="UserMasterEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
@@ -51,6 +52,7 @@
           <EntitySetMapping Name="UserMasters">
             <EntityTypeMapping TypeName="UserMaster.UserMaster">
               <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserFname" ColumnName="UserFname" />
                 <ScalarProperty Name="UserLname" ColumnName="UserLname" />
