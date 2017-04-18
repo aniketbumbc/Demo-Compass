@@ -26,5 +26,6 @@ namespace Demo_Compas_App.Models
         }
     
         public DbSet<UserMaster> UserMasters { get; set; }
+        public DbSet<RoleMaster> RoleMasters { get; set; }
     }
 }

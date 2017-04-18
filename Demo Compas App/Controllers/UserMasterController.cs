@@ -34,9 +34,14 @@ namespace Demo_Compas_App.Controllers
         }
 
         // GET: UserMaster/Create
-        public ActionResult Create()
+        public ActionResult Create(int id=0)
         {
-            return View();
+            UserMaster usermodel = new UserMaster();
+            using (UserMasterEntities db = new UserMasterEntities())
+            {
+                usermodel.RoleCollection = db.RoleMasters.ToList<RoleMaster>();
+            }
+                return View(usermodel);
         }
 
         // POST: UserMaster/Create
@@ -51,6 +56,7 @@ namespace Demo_Compas_App.Controllers
                     {
                         dbModel.UserMasters.Add(usermaster);
                         dbModel.SaveChanges();
+
                 }
                 return RedirectToAction("Index");
             }
@@ -63,13 +69,26 @@ namespace Demo_Compas_App.Controllers
         }
 
         // GET: UserMaster/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id=0)
         {
+            //UserMaster usermodel = new UserMaster();
             using (UserMasterEntities dbModel = new UserMasterEntities())
-            {
-                return View(dbModel.UserMasters.Where(x => x.UserId==id).FirstOrDefault());
+           {
+               
+                //usermodel.RoleCollection = dbModel.RoleMasters.ToList<RoleMaster>();
+                return View(dbModel.UserMasters.Where(x => x.UserId == id).FirstOrDefault());
             }
-                
+            //return View(usermodel);
+
+
+            // using (UserMasterEntities db = new UserMasterEntities())
+            {
+
+
+
+            }
+            
+
         }
 
         // POST: UserMaster/Edit/5

@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create","UserMaster",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -73,23 +73,8 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    List<SelectListItem> listitems = new List<SelectListItem>();
-
-                    listitems.Add(new SelectListItem
-                    {
-                        Text = "Active",
-                        Value = "1"
-                    });
-                    listitems.Add(new SelectListItem
-                    {
-                        Text = "Inactive",
-                        Value = "14",
-
-                    });
-                }
-                @Html.DropDownListFor(model => model.RoleId, listitems, "---Select Item---")
+            <div class="col-md-10">                
+                @Html.DropDownListFor(model => model.RoleId,new SelectList(Model.RoleCollection,"RoleId","RoleName"),"--Select Role--")
                 @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
             </div>
       </div>

@@ -12,6 +12,7 @@ namespace Demo_Compas_App.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class UserMaster
     {
@@ -25,5 +26,9 @@ namespace Demo_Compas_App.Models
         [DisplayName("Role Name")]
         public Nullable<int> RoleId { get; set; }
         public Nullable<bool> isActive { get; set; }
+    
+        public virtual RoleMaster RoleMaster { get; set; }
+        [NotMapped]
+        public List<RoleMaster> RoleCollection { get; set; }
     }
 }

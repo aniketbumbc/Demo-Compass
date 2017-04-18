@@ -232,7 +232,7 @@
       <DependentUpon>RoleMaster.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RoleMaster.cs">
-      <DependentUpon>RoleMaster.tt</DependentUpon>
+      <DependentUpon>UserMaster.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RoleMaster.Designer.cs">
       <AutoGen>True</AutoGen>

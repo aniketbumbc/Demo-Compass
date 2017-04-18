@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="UserMaster.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="RoleMaster">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" />
+          <Property Name="RoleDesc" Type="varchar" MaxLength="50" />
+          <Property Name="RoleStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="UserMaster">
           <Key>
             <PropertyRef Name="UserId" />
@@ -19,8 +28,25 @@
           <Property Name="RoleId" Type="int" />
           <Property Name="isActive" Type="bit" />
         </EntityType>
+        <Association Name="FK_User_Master_RoleMaster">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="0..1" />
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserMaster">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="UserMasterStoreContainer">
+          <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_User_Master_RoleMaster" Association="Self.FK_User_Master_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMaster" />
+            <End Role="UserMaster" EntitySet="UserMaster" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -39,10 +65,38 @@
           <Property Name="UserContactno" Type="Int32" />
           <Property Name="RoleId" Type="Int32" />
           <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="RoleMaster" Relationship="UserMaster.FK_User_Master_RoleMaster" FromRole="UserMaster" ToRole="RoleMaster" />
         </EntityType>
         <EntityContainer Name="UserMasterEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
+          <EntitySet Name="RoleMasters" EntityType="UserMaster.RoleMaster" />
+          <AssociationSet Name="FK_User_Master_RoleMaster" Association="UserMaster.FK_User_Master_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMasters" />
+            <End Role="UserMaster" EntitySet="UserMasters" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="RoleMaster">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserMasters" Relationship="UserMaster.FK_User_Master_RoleMaster" FromRole="RoleMaster" ToRole="UserMaster" />
+        </EntityType>
+        <Association Name="FK_User_Master_RoleMaster">
+          <End Type="UserMaster.RoleMaster" Role="RoleMaster" Multiplicity="0..1" />
+          <End Type="UserMaster.UserMaster" Role="UserMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserMaster">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -60,6 +114,16 @@
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
                 <ScalarProperty Name="UserContactno" ColumnName="UserContactno" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleMasters">
+            <EntityTypeMapping TypeName="UserMaster.RoleMaster">
+              <MappingFragment StoreEntitySet="RoleMaster">
+                <ScalarProperty Name="RoleStatus" ColumnName="RoleStatus" />
+                <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>

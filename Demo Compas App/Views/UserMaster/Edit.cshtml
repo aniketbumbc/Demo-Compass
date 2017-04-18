@@ -71,35 +71,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    List<SelectListItem> listitems = new List<SelectListItem>();
-
-                    listitems.Add(new SelectListItem
-                    {
-                        Text = "Active",
-                        Value = "1"
-                    });
-                    listitems.Add(new SelectListItem
-                    {
-                        Text = "Inactive",
-                        Value = "2",
-
-                    });
-                }
-
-
-
-
-
-
-
-
-
-                @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
-            </div>
+                   
         </div>
 
         <div class="form-group">
@@ -108,7 +80,7 @@
                 <input type="reset" value="Clear" class="btn btn-default"/>
             </div>
         </div>
-    </div>
+    
 }
 
 <div>

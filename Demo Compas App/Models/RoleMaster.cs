@@ -11,18 +11,19 @@ namespace Demo_Compas_App.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class RoleMaster
     {
+        public RoleMaster()
+        {
+            this.UserMasters = new HashSet<UserMaster>();
+        }
+    
         public int RoleId { get; set; }
-        [Required]
-        [DisplayName("Role Name")]
         public string RoleName { get; set; }
-        [DisplayName("Role Discripation")]
         public string RoleDesc { get; set; }
-        [DisplayName("Role Status")]
         public string RoleStatus { get; set; }
+    
+        public virtual ICollection<UserMaster> UserMasters { get; set; }
     }
 }
