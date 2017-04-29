@@ -16,7 +16,7 @@ namespace Demo_Compas_App.Controllers
         // GET: RoleMaster
         public ActionResult Index()
         {
-            using (RoleMasterEntities dbModel = new RoleMasterEntities())
+            using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
             {
                 return View(dbModel.RoleMasters.ToList()); // Get All Role Master Name into view 
             }
@@ -25,7 +25,7 @@ namespace Demo_Compas_App.Controllers
         // GET: RoleMaster/Details/5
         public ActionResult Details(int id)
         {
-            using (RoleMasterEntities dbModel = new RoleMasterEntities())
+            using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
             {
                 return View(dbModel.RoleMasters.Where(x =>x.RoleId==id).FirstOrDefault());
             }
@@ -46,7 +46,7 @@ namespace Demo_Compas_App.Controllers
         {
             try
             {
-                using (RoleMasterEntities dbModel = new RoleMasterEntities())
+                using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
                 {
                     dbModel.RoleMasters.Add(rolemaster); // Add to Database
                     dbModel.SaveChanges();// Add or Save to Database
@@ -62,7 +62,7 @@ namespace Demo_Compas_App.Controllers
        
         public ActionResult Edit(int id)
         {
-            using (RoleMasterEntities dbModel = new RoleMasterEntities())
+            using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
             {
                 return View(dbModel.RoleMasters.Where(x => x.RoleId == id).FirstOrDefault());
             }
@@ -72,7 +72,7 @@ namespace Demo_Compas_App.Controllers
         {
             try
             {
-                using (RoleMasterEntities dbModel = new RoleMasterEntities())
+                using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
                 {
                     dbModel.Entry(rolemaster).State = EntityState.Modified;
                     dbModel.SaveChanges();
@@ -87,7 +87,7 @@ namespace Demo_Compas_App.Controllers
         }      
         public ActionResult Delete(int id)
         {
-            using (RoleMasterEntities dbModel = new RoleMasterEntities())
+            using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
             {
                 return View(dbModel.RoleMasters.Where(x => x.RoleId == id).FirstOrDefault());
             }
@@ -99,7 +99,7 @@ namespace Demo_Compas_App.Controllers
             try
             {
                 // TODO: Add delete logic here
-                using (RoleMasterEntities dbModel = new RoleMasterEntities())
+                using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
                 {
                     RoleMaster rolemaster =dbModel.RoleMasters.Where(x => x.RoleId == id).FirstOrDefault();
                     dbModel.RoleMasters.Remove(rolemaster);

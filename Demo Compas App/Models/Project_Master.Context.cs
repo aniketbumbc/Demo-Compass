@@ -13,10 +13,10 @@ namespace Demo_Compas_App.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RoleMasterEntities : DbContext
+    public partial class ProjectMasterEntities : DbContext
     {
-        public RoleMasterEntities()
-            : base("name=RoleMasterEntities")
+        public ProjectMasterEntities()
+            : base("name=ProjectMasterEntities")
         {
         }
     
@@ -25,6 +25,10 @@ namespace Demo_Compas_App.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<MenuMaster> MenuMasters { get; set; }
+        public DbSet<RoleMappMaster> RoleMappMasters { get; set; }
         public DbSet<RoleMaster> RoleMasters { get; set; }
+        public DbSet<User_Login> User_Login { get; set; }
+        public DbSet<UserMaster> UserMasters { get; set; }
     }
 }

@@ -1,0 +1,58 @@
+﻿@model  Demo_Compas_App.Models.RoleMappMaster
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    li{
+        display:inline;
+    }
+    ul{
+        margin:0;
+        padding:0;
+    }
+
+</style>
+<script type="text/jscript">
+    $(function () {
+        $('#RoleId').change(function () {
+            $.getJSON('/DDL/DistrictList/' + $('#State').val(), function (data) {
+                var items = '<option>Select a District</option>';
+                $.each(data, function (i, district) {
+                    items += "<option value='" + district.Value + "'>" + district.Text + "</option>";
+                });
+                $('#District').html(items);
+            });
+        });
+    });
+</script>
+
+<h2>Role Menu Mapping </h2>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.DropDownListFor(model => model.RoleId, new SelectList(ViewBag.RoleList, "RoleId", "RoleName"), "--Select Item--")
+    </div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.MenuId, htmlAttributes: new { @class = "control-label col-md-2" })
+   
+
+    @foreach (var menu in ViewBag.MenuList)
+    {
+
+        string MenuName = Convert.ToString(menu.MenuName);
+        int id = Convert.ToInt32(menu.MenuId);
+        <ul>
+
+            <li>                             
+                @Html.CheckBox(MenuName, new { isChecked = true })
+                @Html.Label(MenuName)
+            </li>
+        </ul>
+
+    }
+
+   </div>
+
+<input type="submit" value="Submit" id="btnSubmit" />
+<input type="reset" value="Clear" />

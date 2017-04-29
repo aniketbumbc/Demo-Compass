@@ -13,7 +13,7 @@ namespace Demo_Compas_App.Controllers
         // GET: UserMaster
         public ActionResult Index()
         {
-            using (UserMasterEntities dbModel = new UserMasterEntities()) 
+            using (ProjectMasterEntities dbModel = new ProjectMasterEntities()) 
             {
 
                 return View(dbModel.UserMasters.ToList());
@@ -25,7 +25,7 @@ namespace Demo_Compas_App.Controllers
         // GET: UserMaster/Details/5
         public ActionResult Details(int id)
         {
-            using (UserMasterEntities dbModel = new UserMasterEntities())
+            using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
             {
                 return View(dbModel.UserMasters.Where(x =>x.UserId==id).FirstOrDefault());
 
@@ -37,7 +37,7 @@ namespace Demo_Compas_App.Controllers
         public ActionResult Create(int id=0)
         {
             UserMaster usermodel = new UserMaster();
-            using (UserMasterEntities db = new UserMasterEntities())
+            using (ProjectMasterEntities db = new ProjectMasterEntities())
             {
                 usermodel.RoleCollection = db.RoleMasters.ToList<RoleMaster>();
             }
@@ -52,7 +52,7 @@ namespace Demo_Compas_App.Controllers
             {
                 
                 
-                    using (UserMasterEntities dbModel = new UserMasterEntities())
+                    using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
                     {
                         dbModel.UserMasters.Add(usermaster);
                         dbModel.SaveChanges();
@@ -72,22 +72,23 @@ namespace Demo_Compas_App.Controllers
         public ActionResult Edit(int id=0)
         {
             //UserMaster usermodel = new UserMaster();
-            using (UserMasterEntities dbModel = new UserMasterEntities())
-           {
+           // using (UserMasterEntities dbModel = new UserMasterEntities())
+           //{
                
-                //usermodel.RoleCollection = dbModel.RoleMasters.ToList<RoleMaster>();
-                return View(dbModel.UserMasters.Where(x => x.UserId == id).FirstOrDefault());
-            }
+           //     //usermodel.RoleCollection = dbModel.RoleMasters.ToList<RoleMaster>();
+           //     return View(dbModel.UserMasters.Where(x => x.UserId == id).FirstOrDefault());
+           // }
             //return View(usermodel);
 
 
-            // using (UserMasterEntities db = new UserMasterEntities())
+            UserMaster usermodel = new UserMaster();
+            using (ProjectMasterEntities db = new ProjectMasterEntities())
             {
-
-
-
+                usermodel = db.UserMasters.Where(x => x.UserId == id).FirstOrDefault();
+                usermodel.RoleCollection = db.RoleMasters.ToList<RoleMaster>();
             }
-            
+            return View(usermodel);
+
 
         }
 
@@ -97,7 +98,7 @@ namespace Demo_Compas_App.Controllers
         {
             try
             {
-                using (UserMasterEntities dbModel = new UserMasterEntities())
+                using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
                 {
                     dbModel.Entry(usermaster).State = EntityState.Modified;
                     dbModel.SaveChanges();
@@ -113,7 +114,7 @@ namespace Demo_Compas_App.Controllers
         // GET: UserMaster/Delete/5
         public ActionResult Delete(int id)
         {
-            using (UserMasterEntities dbModel = new UserMasterEntities())
+            using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
             {
                 return View(dbModel.UserMasters.Where(x => x.UserId == id).FirstOrDefault());
             }
@@ -125,7 +126,7 @@ namespace Demo_Compas_App.Controllers
         {
             try
             {
-                using (UserMasterEntities dbModel = new UserMasterEntities())
+                using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
                 {
                     UserMaster usermaster = dbModel.UserMasters.Where(x => x.UserId == id).FirstOrDefault();
                     dbModel.UserMasters.Remove(usermaster);

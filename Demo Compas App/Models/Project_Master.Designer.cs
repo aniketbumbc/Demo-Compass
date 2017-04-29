@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Aniket\documents\visual studio 2015\Projects\Demo Compas App\Demo Compas App\Models\UserGetRegister.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Aniket\documents\visual studio 2015\Projects\Demo Compas App\Demo Compas App\Models\Project_Master.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

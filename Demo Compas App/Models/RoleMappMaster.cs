@@ -12,10 +12,13 @@ namespace Demo_Compas_App.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User_Login
+    public partial class RoleMappMaster
     {
-        public int UserId { get; set; }
-        public string Name { get; set; }
-        public string Password { get; set; }
+        public int RMapId { get; set; }
+        public Nullable<int> RoleId { get; set; }
+        public Nullable<int> MenuId { get; set; }
+    
+        public virtual MenuMaster MenuMaster { get; set; }
+        public virtual RoleMaster RoleMaster { get; set; }
     }
 }

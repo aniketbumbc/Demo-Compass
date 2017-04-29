@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Demo_Compas_App.Models
+namespace Demo_Compas_App.Scripts
 {
     using System;
     using System.Data.Entity;

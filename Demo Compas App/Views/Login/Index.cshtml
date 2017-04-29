@@ -1,6 +1,7 @@
-﻿@model Demo_Compas_App.Models.User_Reg
+﻿@model Demo_Compas_App.Models.UserMaster
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "index";
 }
 <html>
 <h2>Compass Group Application</h2>
@@ -8,61 +9,63 @@
     <title>Login Page</title>
     <style>
         #login-div {
-        /* position:absolute;
+            /* position:absolute;
         left:40%;
         top:40%;*/
-        width:30%;
-        margin:0 auto;
-        background:1px border-box red;
-        padding:30px 30px;        
+            width: 30%;
+            margin: 0 auto;
+            background: 1px border-box red;
+            padding: 30px 30px;
         }
+
         .ValidationError {
-            color:gold;
-            }
-       </style>
+            color: gold;
+        }
+    </style>
 </head>
 <body>
-<div id="login-div">
-   @using (Html.BeginForm("autherize","Login",FormMethod.Post))
-   {
-       <table>
-           <tr>
-               <td>
-                   @Html.LabelFor(model => model.UserName)
-               </td>
-            <td>
-                @Html.TextBoxFor(model => model.UserName)
-            </td>
-           </tr>
-           <tr>
-               <td></td>
-               <td>@Html.ValidationMessageFor(model => model.Name)</td>
-           </tr>
-           <tr>
-               <td>
-                   @Html.LabelFor(model => model.Password)
-               </td>
-           
-               <td>
-                   @Html.PasswordFor(model => model.Password)
-               </td>
-           <tr>
-           <tr>
-               <td></td>
-               <td>@Html.ValidationMessageFor(model => model.Password)</td>
-           </tr>
-           <tr>
-               <td colspan="2"> <label class="ValidationError">@Html.DisplayFor(model => model.Loginerror) </label></td>
-           </tr>
-           <tr>
-                 <td> </td>
-                   <td> <input type="submit" value="Login" />
-                        <input type="reset" value="Clear" />           
-                  </td>
-           </tr>
-       </table>
-   }
-</div>
+    <div id="login-div">
+        @using (Html.BeginForm("autherize", "Login", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.UserName)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.UserName)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.UserPassword)
+                    </td>
+
+                    <td>
+                        @Html.PasswordFor(model => model.UserPassword)
+                    </td>
+                <tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.UserPassword)</td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <label class="ValidationError">@Html.DisplayFor(model => model.Loginerror) </label></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td>
+                        <input type="submit" value="Login" />
+                        <input type="reset" value="Clear" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>

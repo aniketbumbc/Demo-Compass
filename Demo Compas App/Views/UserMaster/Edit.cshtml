@@ -70,8 +70,15 @@
                 @Html.ValidationMessageFor(model => model.UserContactno, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.RoleId, new SelectList(Model.RoleCollection, "RoleId", "RoleName"), "--Select Role--")
+                @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-                   
+                         
         </div>
 
         <div class="form-group">

@@ -12,23 +12,28 @@ namespace Demo_Compas_App.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class UserMaster
     {
+        [Key]
         public int UserId { get; set; }
         public string UserFname { get; set; }
         public string UserLname { get; set; }
+        [DisplayName("User Name")]
         public string UserName { get; set; }
+        [DisplayName("Password")]
         public string UserPassword { get; set; }
         public string UserEmail { get; set; }
         public Nullable<int> UserContactno { get; set; }
         [DisplayName("Role Name")]
         public Nullable<int> RoleId { get; set; }
         public Nullable<bool> isActive { get; set; }
-    
+
         public virtual RoleMaster RoleMaster { get; set; }
         [NotMapped]
         public List<RoleMaster> RoleCollection { get; set; }
+        public string Loginerror { get; set; }
     }
 }

@@ -12,20 +12,17 @@ namespace Demo_Compas_App.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RoleMaster
+    public partial class MenuMaster
     {
-        public RoleMaster()
+        public MenuMaster()
         {
             this.RoleMappMasters = new HashSet<RoleMappMaster>();
-            this.UserMasters = new HashSet<UserMaster>();
         }
     
-        public int RoleId { get; set; }
-        public string RoleName { get; set; }
-        public string RoleDesc { get; set; }
-        public string RoleStatus { get; set; }
+        public int MenuId { get; set; }
+        public string MenuName { get; set; }
+        public Nullable<bool> MenuStatus { get; set; }
     
         public virtual ICollection<RoleMappMaster> RoleMappMasters { get; set; }
-        public virtual ICollection<UserMaster> UserMasters { get; set; }
     }
 }
