@@ -88,6 +88,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="usp_getMenuNameRoleWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="Project_MasterStoreContainer">
           <EntitySet Name="MenuMaster" EntityType="Self.MenuMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMappMaster" EntityType="Self.RoleMappMaster" Schema="dbo" store:Type="Tables" />
@@ -218,7 +221,15 @@
             <End Role="RoleMaster" EntitySet="RoleMasters" />
             <End Role="UserMaster" EntitySet="UserMasters" />
           </AssociationSet>
+          <FunctionImport Name="usp_getMenuNameRoleWise" ReturnType="Collection(Project_Master.usp_getMenuNameRoleWise_Result)">
+          <Parameter Name="RoleID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="usp_getMenuNameRoleWise_Result">
+          <Property Type="Int32" Name="MenuId" Nullable="false" />
+          <Property Type="String" Name="MenuName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="MenuStatus" Nullable="true" />
+          </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -277,6 +288,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_getMenuNameRoleWise" FunctionName="Project_Master.Store.usp_getMenuNameRoleWise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Project_Master.usp_getMenuNameRoleWise_Result">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -173,6 +173,9 @@
     <Compile Include="Models\User_Login.cs">
       <DependentUpon>Project_Master.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usp_getMenuNameRoleWise_Result.cs">
+      <DependentUpon>Project_Master.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

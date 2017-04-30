@@ -12,6 +12,9 @@ namespace Demo_Compas_App.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class ProjectMasterEntities : DbContext
     {
@@ -30,5 +33,14 @@ namespace Demo_Compas_App.Models
         public DbSet<RoleMaster> RoleMasters { get; set; }
         public DbSet<User_Login> User_Login { get; set; }
         public DbSet<UserMaster> UserMasters { get; set; }
+    
+        public virtual ObjectResult<usp_getMenuNameRoleWise_Result> usp_getMenuNameRoleWise(Nullable<int> roleID)
+        {
+            var roleIDParameter = roleID.HasValue ?
+                new ObjectParameter("RoleID", roleID) :
+                new ObjectParameter("RoleID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getMenuNameRoleWise_Result>("usp_getMenuNameRoleWise", roleIDParameter);
+        }
     }
 }

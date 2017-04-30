@@ -1,6 +1,7 @@
 ﻿using Demo_Compas_App.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,7 +24,7 @@ namespace Demo_Compas_App.Controllers
                 var userDetails = db.UserMasters.Where(x => x.UserName == usermodel.UserName && x.UserPassword == usermodel.UserPassword).FirstOrDefault();
                 if (userDetails == null)
                 {
-                    usermodel.Loginerror = "Wrong User Name or password";
+                   // usermodel.Loginerror = "Wrong User Name or password";
                     return View("Index", usermodel);
                 }
                 else
@@ -32,8 +33,38 @@ namespace Demo_Compas_App.Controllers
                     Session["UserId"] = userDetails.UserId;
                     // find the role of user
 
+                    using (var context = new ProjectMasterEntities())
+                    {
+                        int? roleid = userDetails.RoleId;
+                        var clientIdParameter = new SqlParameter("@RoleId",roleid);
+
+                        var result = context.Database
+                            .SqlQuery<usp_getMenuNameRoleWise_Result>("usp_getMenuNameRoleWise @RoleId", clientIdParameter)
+                            .ToList();
+                        Session["UserMenu"] = result;
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    //List<usp_getMenuNameRoleWise_Result> objmm = new List<usp_getMenuNameRoleWise_Result>();
+                    //int? roleid = userDetails.RoleId;
+                    // objmm = db.usp_getMenuNameRoleWise(roleid);
+
                     // find the list of all the available menus for the users role - store in session
-                        return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
             }
         }

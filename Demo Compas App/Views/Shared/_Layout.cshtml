@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Demo_Compas_App.Models.usp_getMenuNameRoleWise_Result
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,17 +23,23 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-
-
-                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Registration", "AddorEdit", "Registration")</li>      
-                    <li>@Html.ActionLink("Role Master","Index","RoleMaster")</li>           
-                        
-                   <!--  <li>@Html.ActionLink("Login", "Index", "Login")</li>
-                        <li>@Html.ActionLink("Logout", "Logout", "Login")</li> -->
                     
-                        
-                </ul>
+                    @{
+                        var error = (List<usp_getMenuNameRoleWise_Result>)Session["UserMenu"];
+
+                        foreach (var menu in error)
+                        {
+
+                        <li>Html.ActionLink(menu.MenuName, menu.MenuName, menu.MenuName)</li>
+
+
+                        }
+                        }
+
+
+
+
+</ul>
             </div>
         </div>
     </div>
