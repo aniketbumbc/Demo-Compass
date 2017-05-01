@@ -31,16 +31,24 @@ namespace Demo_Compas_App.Models
         public DbSet<MenuMaster> MenuMasters { get; set; }
         public DbSet<RoleMappMaster> RoleMappMasters { get; set; }
         public DbSet<RoleMaster> RoleMasters { get; set; }
-        public DbSet<User_Login> User_Login { get; set; }
         public DbSet<UserMaster> UserMasters { get; set; }
     
-        public virtual ObjectResult<usp_getMenuNameRoleWise_Result> usp_getMenuNameRoleWise(Nullable<int> roleID)
+        //public virtual ObjectResult<usp_getMenuNameRoleWise_Result> usp_getMenuNameRoleWise(Nullable<int> roleID)
+        //{
+          //  var roleIDParameter = roleID.HasValue ?
+          //      new ObjectParameter("RoleID", roleID) :
+          //      new ObjectParameter("RoleID", typeof(int));
+    
+          //  return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getMenuNameRoleWise_Result>("usp_getMenuNameRoleWise", roleIDParameter);
+       // }
+    
+        public virtual ObjectResult<getMenu_Result> getMenu(Nullable<int> roleID)
         {
             var roleIDParameter = roleID.HasValue ?
                 new ObjectParameter("RoleID", roleID) :
                 new ObjectParameter("RoleID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getMenuNameRoleWise_Result>("usp_getMenuNameRoleWise", roleIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getMenu_Result>("getMenu", roleIDParameter);
         }
     }
 }

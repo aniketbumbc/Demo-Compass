@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="Project_Master.MenuMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Project_Master.RoleMappMaster" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Project_Master.RoleMaster" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Project_Master.User_Login" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Project_Master.UserMaster" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
         <AssociationConnector Association="Project_Master.Menu_map_menuid" ManuallyRouted="false" />
         <AssociationConnector Association="Project_Master.Role_map_roleid" ManuallyRouted="false" />

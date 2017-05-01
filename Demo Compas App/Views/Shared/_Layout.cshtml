@@ -1,5 +1,4 @@
-﻿@model Demo_Compas_App.Models.usp_getMenuNameRoleWise_Result
-
+﻿@using Demo_Compas_App.Models;
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,20 +23,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     
+
                     @{
-                        var error = (List<usp_getMenuNameRoleWise_Result>)Session["UserMenu"];
-
-                        foreach (var menu in error)
+                        var menulist =(List <getMenu_Result>)Session["UserMenu"];
+                        foreach (var menu in menulist)
                         {
-
-                        <li>Html.ActionLink(menu.MenuName, menu.MenuName, menu.MenuName)</li>
-
-
+                        <li>@Html.ActionLink(menu.MenuName,menu.MenuName,menu.MenuController)</li>
                         }
-                        }
-
-
-
+                    }
+                    
+                        <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                
 
 </ul>
             </div>
@@ -48,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Compass Group</p>
+            <p>&copy; @DateTime.Now.Year - Compass Group Application</p>
         </footer>
     </div>
 

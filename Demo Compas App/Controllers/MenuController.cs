@@ -10,7 +10,7 @@ namespace Demo_Compas_App.Controllers
     public class MenuController : Controller
     {
         // GET: Menu
-        public ActionResult Index()
+        public ActionResult Menus()
         {
             using (ProjectMasterEntities dbModel = new ProjectMasterEntities())
             {
@@ -47,7 +47,7 @@ namespace Demo_Compas_App.Controllers
 
                 }
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Menus");
             }
             catch
             {
@@ -69,7 +69,7 @@ namespace Demo_Compas_App.Controllers
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Menus");
             }
             catch
             {
@@ -91,7 +91,7 @@ namespace Demo_Compas_App.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Menus");
             }
             catch
             {

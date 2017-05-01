@@ -10,12 +10,21 @@ namespace Demo_Compas_App.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Home()
         {
             return View();
         }
 
         public ActionResult About()
+        {
+            return View();
+        }
+        public ActionResult Information()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
         {
             return View();
         }

@@ -11,10 +11,11 @@ namespace Demo_Compas_App.Models
 {
     using System;
     
-    public partial class usp_getMenuNameRoleWise_Result
+    public partial class getMenu_Result
     {
         public int MenuId { get; set; }
         public string MenuName { get; set; }
         public Nullable<bool> MenuStatus { get; set; }
+        public string MenuController { get; set; }
     }
 }

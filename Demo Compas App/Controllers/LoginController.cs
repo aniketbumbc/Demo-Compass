@@ -32,6 +32,7 @@ namespace Demo_Compas_App.Controllers
                     Session["Name"] = userDetails.UserName;
                     Session["UserId"] = userDetails.UserId;
                     // find the role of user
+                    Session["roleId"] = userDetails.RoleId;
 
                     using (var context = new ProjectMasterEntities())
                     {
@@ -39,32 +40,16 @@ namespace Demo_Compas_App.Controllers
                         var clientIdParameter = new SqlParameter("@RoleId",roleid);
 
                         var result = context.Database
-                            .SqlQuery<usp_getMenuNameRoleWise_Result>("usp_getMenuNameRoleWise @RoleId", clientIdParameter)
+                            .SqlQuery<getMenu_Result>("usp_getMenuNameRoleWise @RoleId", clientIdParameter)
                             .ToList();
                         Session["UserMenu"] = result;
                     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     //List<usp_getMenuNameRoleWise_Result> objmm = new List<usp_getMenuNameRoleWise_Result>();
                     //int? roleid = userDetails.RoleId;
                     // objmm = db.usp_getMenuNameRoleWise(roleid);
 
                     // find the list of all the available menus for the users role - store in session
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Home", "Home");
                 }
             }
         }

@@ -12,6 +12,7 @@
           <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MenuName" Type="varchar" MaxLength="50" />
           <Property Name="MenuStatus" Type="bit" />
+          <Property Name="MenuController" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="RoleMappMaster">
           <Key>
@@ -29,14 +30,6 @@
           <Property Name="RoleName" Type="varchar" MaxLength="50" />
           <Property Name="RoleDesc" Type="varchar" MaxLength="50" />
           <Property Name="RoleStatus" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="User_Login">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
-          <Property Name="Password" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="UserMaster">
           <Key>
@@ -88,6 +81,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="getMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleID" Type="int" Mode="In" />
+        </Function>
         <Function Name="usp_getMenuNameRoleWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RoleID" Type="int" Mode="In" />
         </Function>
@@ -95,7 +91,6 @@
           <EntitySet Name="MenuMaster" EntityType="Self.MenuMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMappMaster" EntityType="Self.RoleMappMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User_Login" EntityType="Self.User_Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_User_Master_RoleMaster" Association="Self.FK_User_Master_RoleMaster">
             <End Role="RoleMaster" EntitySet="RoleMaster" />
@@ -122,6 +117,7 @@
           <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MenuStatus" Type="Boolean" />
           <NavigationProperty Name="RoleMappMasters" Relationship="Self.Menu_map_menuid" FromRole="MenuMaster" ToRole="RoleMappMaster" />
+          <Property Name="MenuController" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="RoleMappMaster">
           <Key>
@@ -143,14 +139,6 @@
           <Property Name="RoleStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="RoleMappMasters" Relationship="Self.Role_map_roleid" FromRole="RoleMaster" ToRole="RoleMappMaster" />
           <NavigationProperty Name="UserMasters" Relationship="Self.FK_User_Master_RoleMaster" FromRole="RoleMaster" ToRole="UserMaster" />
-        </EntityType>
-        <EntityType Name="User_Login">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="UserMaster">
           <Key>
@@ -207,7 +195,6 @@
           <EntitySet Name="MenuMasters" EntityType="Self.MenuMaster" />
           <EntitySet Name="RoleMappMasters" EntityType="Self.RoleMappMaster" />
           <EntitySet Name="RoleMasters" EntityType="Self.RoleMaster" />
-          <EntitySet Name="User_Login" EntityType="Self.User_Login" />
           <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
           <AssociationSet Name="Menu_map_menuid" Association="Self.Menu_map_menuid">
             <End Role="MenuMaster" EntitySet="MenuMasters" />
@@ -224,12 +211,21 @@
           <FunctionImport Name="usp_getMenuNameRoleWise" ReturnType="Collection(Project_Master.usp_getMenuNameRoleWise_Result)">
           <Parameter Name="RoleID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="getMenu" ReturnType="Collection(Project_Master.getMenu_Result)">
+            <Parameter Name="RoleID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="usp_getMenuNameRoleWise_Result">
           <Property Type="Int32" Name="MenuId" Nullable="false" />
           <Property Type="String" Name="MenuName" Nullable="true" MaxLength="50" />
           <Property Type="Boolean" Name="MenuStatus" Nullable="true" />
           </ComplexType>
+        <ComplexType Name="getMenu_Result">
+          <Property Type="Int32" Name="MenuId" Nullable="false" />
+          <Property Type="String" Name="MenuName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="MenuStatus" Nullable="true" />
+          <Property Type="String" Name="MenuController" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -239,6 +235,7 @@
           <EntitySetMapping Name="MenuMasters">
             <EntityTypeMapping TypeName="Project_Master.MenuMaster">
               <MappingFragment StoreEntitySet="MenuMaster">
+                <ScalarProperty Name="MenuController" ColumnName="MenuController" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="MenuName" ColumnName="MenuName" />
                 <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
@@ -264,15 +261,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="User_Login">
-            <EntityTypeMapping TypeName="Project_Master.User_Login">
-              <MappingFragment StoreEntitySet="User_Login">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserMasters">
             <EntityTypeMapping TypeName="Project_Master.UserMaster">
               <MappingFragment StoreEntitySet="UserMaster">
@@ -295,6 +283,16 @@
                 <ScalarProperty Name="MenuName" ColumnName="MenuName" />
                 <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
                 </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getMenu" FunctionName="Project_Master.Store.getMenu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Project_Master.getMenu_Result">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
+                <ScalarProperty Name="MenuController" ColumnName="MenuController" />
+              </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
         </EntityContainerMapping>

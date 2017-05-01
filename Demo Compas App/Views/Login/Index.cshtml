@@ -1,21 +1,21 @@
 ﻿@model Demo_Compas_App.Models.UserMaster
 
 @{
-    ViewBag.Title = "index";
+    Layout = null;
 }
 <html>
-<h2>Compass Group Application</h2>
+<h2 align="center">Compass Group Application</h2>
 <head>
     <title>Login Page</title>
     <style>
         #login-div {
-            /* position:absolute;
+            position:absolute;
         left:40%;
-        top:40%;*/
-            width: 30%;
+        top:30%;
+            width: 20%;
             margin: 0 auto;
             background: 1px border-box red;
-            padding: 30px 30px;
+            padding: 20px 20px;
         }
 
         .ValidationError {
@@ -23,7 +23,7 @@
         }
     </style>
 </head>
-<body>
+<body bgcolor="yellow">
     <div id="login-div">
         @using (Html.BeginForm("autherize", "Login", FormMethod.Post))
         {

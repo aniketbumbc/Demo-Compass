@@ -22,6 +22,7 @@ namespace Demo_Compas_App.Models
         public int MenuId { get; set; }
         public string MenuName { get; set; }
         public Nullable<bool> MenuStatus { get; set; }
+        public string MenuController { get; set; }
     
         public virtual ICollection<RoleMappMaster> RoleMappMasters { get; set; }
     }

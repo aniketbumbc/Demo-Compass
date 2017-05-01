@@ -130,7 +130,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -142,6 +142,9 @@
     <Compile Include="Controllers\UserMasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getMenu_Result.cs">
+      <DependentUpon>Project_Master.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MenuMaster.cs">
       <DependentUpon>Project_Master.tt</DependentUpon>
@@ -170,12 +173,6 @@
     <Compile Include="Models\UserMaster.cs">
       <DependentUpon>Project_Master.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\User_Login.cs">
-      <DependentUpon>Project_Master.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\usp_getMenuNameRoleWise_Result.cs">
-      <DependentUpon>Project_Master.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,20 +186,22 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\About\Create.cshtml" />
-    <Content Include="Views\RoleMaster\Index.cshtml" />
+    <Content Include="Views\RoleMaster\Roles.cshtml" />
     <Content Include="Views\RoleMaster\Create.cshtml" />
     <Content Include="Views\RoleMaster\Details.cshtml" />
     <Content Include="Views\RoleMaster\Edit.cshtml" />
     <Content Include="Views\RoleMaster\Delete.cshtml" />
-    <Content Include="Views\UserMaster\Index.cshtml" />
+    <Content Include="Views\UserMaster\Users.cshtml" />
     <Content Include="Views\UserMaster\Details.cshtml" />
     <Content Include="Views\UserMaster\Create.cshtml" />
     <Content Include="Views\UserMaster\Edit.cshtml" />
     <Content Include="Views\UserMaster\Delete.cshtml" />
     <Content Include="Views\Menu\Create.cshtml" />
-    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Menu\Menus.cshtml" />
     <Content Include="Views\RoleMap\Index.cshtml" />
     <Content Include="Views\Login\index.cshtml" />
+    <Content Include="Views\Home\Information.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

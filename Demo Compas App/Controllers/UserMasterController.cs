@@ -11,7 +11,7 @@ namespace Demo_Compas_App.Controllers
     {
         public EntityState EntiyState { get; private set; }
         // GET: UserMaster
-        public ActionResult Index()
+        public ActionResult Users()
         {
             using (ProjectMasterEntities dbModel = new ProjectMasterEntities()) 
             {
